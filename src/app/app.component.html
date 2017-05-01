@@ -1,3 +1,19 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="over">
+    <md-toolbar>
+      <button md-icon-button (click)="sidenav.close()">
+      <i class="material-icons app-toolbar-menu">close</i>
+    </button>
+
+      <span>Melvin Laplanche</span>
+    </md-toolbar>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.open()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+
+    <span>FirstRow</span>
+  </md-toolbar>
+</md-sidenav-container>
