@@ -9,11 +9,15 @@
     </md-toolbar>
   </md-sidenav>
 
-  <md-toolbar color="primary">
-    <button md-icon-button (click)="sidenav.open()">
-      <i class="material-icons app-toolbar-menu">menu</i>
-    </button>
+  <div class="sidenav-content">
+    <md-toolbar color="primary">
+      <button md-icon-button (click)="sidenav.open()">
+        <i class="material-icons app-toolbar-menu">menu</i>
+      </button>
 
-    <span>FirstRow</span>
-  </md-toolbar>
+      <span>FirstRow</span>
+    </md-toolbar>
+
+    <router-outlet></router-outlet>
+  </div>
 </md-sidenav-container>

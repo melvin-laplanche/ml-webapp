@@ -12,9 +12,18 @@ import { MdButtonModule } from '@angular/material';
 // App components
 import { AppComponent } from './app.component';
 
+// Router
+import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+  { path: '**', component: PageNotFoundComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +32,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MdToolbarModule,
     MdSidenavModule,
-    MdButtonModule
+    MdButtonModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
