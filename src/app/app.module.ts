@@ -9,19 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdToolbarModule, MdSidenavModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
 
+// Router
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './app.routes';
+
 // App components
 import { AppComponent } from './app.component';
-
-// Router
-import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-const appRoutes: Routes = [
-  { path: 'blog', loadChildren: 'app/blog/blog.module#BlogModule' },
-
-  { path: '', redirectTo: '/blog', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
-];
 
 @NgModule({
   declarations: [
