@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
-import { ArticlesComponent } from './articles/articles.component';
+import { ListingComponent } from './listing/listing.component';
 
 export const blogRoutes: Routes = [
-  { path: '', component: ArticlesComponent },
+  { path: '', component: ListingComponent },
 ];

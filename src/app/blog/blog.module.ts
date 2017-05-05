@@ -7,6 +7,7 @@ import { blogRoutes } from './blog.routes';
 
 // Blog components
 import { ArticlesComponent } from './articles/articles.component';
+import { ListingComponent } from './listing/listing.component';
 
 
 @NgModule({
@@ -17,6 +18,6 @@ import { ArticlesComponent } from './articles/articles.component';
   exports: [
     RouterModule
   ],
-  declarations: [ArticlesComponent]
+  declarations: [ArticlesComponent, ListingComponent]
 })
 export class BlogModule { }
