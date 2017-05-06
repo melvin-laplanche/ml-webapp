@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdToolbarModule, MdSidenavModule } from '@angular/material';
-import { MdButtonModule } from '@angular/material';
+import { MdButtonModule, MdListModule } from '@angular/material';
 
 // Router
 import { RouterModule } from '@angular/router';
@@ -23,6 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PageNotFoundComponent,
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -30,7 +31,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MdToolbarModule,
     MdSidenavModule,
     MdButtonModule,
-    RouterModule.forRoot(appRoutes)
+    MdListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
