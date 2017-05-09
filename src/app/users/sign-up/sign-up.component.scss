@@ -1,0 +1,36 @@
+@import "../../../media-queries.scss";
+
+md-card {
+  margin-top: 24px;
+}
+
+@include  respond-to(phone) {
+  md-card {
+    margin: 24px;
+  }
+}
+
+@include  respond-to(tablet) {
+  md-card {
+    margin: 0;
+    width: 400px;
+
+    position: absolute;
+    top: calc(50% + 32px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@include  respond-to(small) {
+  md-card {
+    width: 700px;
+
+    md-input-container {
+      margin-top: 25px;
+      width: 500px;
+
+      align-self: center;
+    }
+  }
+}
