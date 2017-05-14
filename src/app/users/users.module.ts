@@ -11,6 +11,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { usersRoutes } from './users.routes';
 
+import { CenteredBoxModule } from '../shared/centered-box/centered-box.module';
+
 // Users components
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UsersService } from './users.service';
@@ -25,7 +27,8 @@ import { UsersService } from './users.service';
     MdCardModule,
     MdButtonModule,
     MdSnackBarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CenteredBoxModule
   ],
   exports: [
     RouterModule

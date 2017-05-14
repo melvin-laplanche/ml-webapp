@@ -1,0 +1,29 @@
+@import "../../../media-queries.scss";
+
+.centered-box {
+  margin-top: 24px;
+}
+
+@include  respond-to(phone) {
+  .centered-box {
+    margin: 24px;
+  }
+}
+
+@include  respond-to(tablet) {
+  .centered-box {
+    margin: 0;
+    width: 400px;
+
+    position: absolute;
+    top: calc(50% + 32px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@include  respond-to(small) {
+  .centered-box {
+    width: 700px;
+  }
+}
