@@ -16,6 +16,7 @@ import { CenteredBoxModule } from '../shared/centered-box/centered-box.module';
 // Users components
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UsersService } from './users.service';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,7 @@ import { UsersService } from './users.service';
   exports: [
     RouterModule
   ],
-  declarations: [SignUpComponent],
+  declarations: [SignUpComponent, SignInComponent],
   providers: [UsersService]
 })
 export class UsersModule { }
