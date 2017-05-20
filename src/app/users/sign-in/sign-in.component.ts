@@ -8,6 +8,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { SIGN_IN } from '../users.actions';
 
+import { appConfig } from '../../app.config';
+
 import { UsersService } from '../users.service';
 import { Session } from '../models';
 
@@ -48,11 +50,11 @@ export class SignInComponent {
 
   onSuccess(sess: Session) {
     this.store.dispatch({ type: SIGN_IN })
-    this.snackBar.open('logged in', 'dismiss');
+    this.snackBar.open('logged in', 'dismiss', appConfig.snackBarDefault);
   }
 
   onFail(err: Response) {
-    this.snackBar.open('Invalid Credentials', 'dismiss');
+    this.snackBar.open('Invalid Credentials', 'dismiss', appConfig.snackBarDefault);
     this.submitted = false;
   }
 }

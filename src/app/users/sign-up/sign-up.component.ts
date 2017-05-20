@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 
 import { MdSnackBar } from '@angular/material';
+import { appConfig } from '../../app.config';
+
+
 import { UsersService } from '../users.service';
 import { User } from '../models';
 
@@ -53,7 +56,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onFail(err: Response) {
-    this.snackBar.open('Something wrong happened', 'dismiss');
+    this.snackBar.open('Something wrong happened', 'dismiss', appConfig.snackBarDefault);
     this.submitted = false;
   }
 }
