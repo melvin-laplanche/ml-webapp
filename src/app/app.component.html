@@ -10,8 +10,15 @@
 
     <md-nav-list>
       <a md-list-item routerLink="/blog" routerLinkActive="active">Blog</a>
-      <a md-list-item routerLink="/users/sign-in" routerLinkActive="active">Sign In</a>
-      <a md-list-item routerLink="/users/sign-up" routerLinkActive="active">Sign Up</a>
+
+      <ng-container *ngIf="!(userState$ | async)">
+        <a md-list-item routerLink="/users/sign-in" routerLinkActive="active">Sign In</a>
+        <a md-list-item routerLink="/users/sign-up" routerLinkActive="active">Sign Up</a>
+      </ng-container>
+
+      <ng-container *ngIf="userState$ | async">
+        <a md-list-item routerLink="/users/sign-out" routerLinkActive="active">Sign Out</a>
+      </ng-container>
     </md-nav-list>
   </md-sidenav>
 

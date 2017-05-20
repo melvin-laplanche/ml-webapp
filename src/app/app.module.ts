@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+// State management
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './app.reducer';
+
 // Angular material
 import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +35,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MdToolbarModule,
     MdSidenavModule,
     MdButtonModule,
-    MdListModule
+    MdListModule,
+    StoreModule.provideStore(appReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]

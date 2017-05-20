@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 
 import { MdSnackBar } from '@angular/material';
+
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.state';
+import { SIGN_IN } from '../users.actions';
+
 import { UsersService } from '../users.service';
 import { Session } from '../models';
 
@@ -11,22 +16,20 @@ import { Session } from '../models';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
   signInForm: FormGroup
   submitted = false
 
   constructor(
     private fb: FormBuilder,
     private userApi: UsersService,
-    private snackBar: MdSnackBar
+    private snackBar: MdSnackBar,
+    private store: Store<AppState>
   ) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.email]],
       password: ['', [Validators.required, Validators.maxLength(255)]],
     });
-  }
-
-  ngOnInit() {
   }
 
   onSubmit() {
@@ -44,6 +47,7 @@ export class SignInComponent implements OnInit {
   }
 
   onSuccess(sess: Session) {
+    this.store.dispatch({ type: SIGN_IN })
     this.snackBar.open('logged in', 'dismiss');
   }
 
