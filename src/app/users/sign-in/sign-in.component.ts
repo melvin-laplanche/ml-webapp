@@ -4,7 +4,7 @@ import { CustomValidators } from 'ng2-validation';
 
 import { MdSnackBar } from '@angular/material';
 import { UsersService } from '../users.service';
-import { User } from '../models';
+import { Session } from '../models';
 
 @Component({
   selector: 'app-sign-in',
@@ -32,19 +32,19 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // let user$ = this.userApi.signIn({
-    //   email: this.signInForm.controls['email'].value,
-    //   password: this.signInForm.controls['password'].value,
-    // })
+    let session$ = this.userApi.signIn({
+      email: this.signInForm.controls['email'].value,
+      password: this.signInForm.controls['password'].value,
+    })
 
-    // user$.subscribe(
-    //   u => this.onSuccess(u),
-    //   err => this.onFail(err)
-    // )
+    session$.subscribe(
+      s => this.onSuccess(s),
+      err => this.onFail(err)
+    )
   }
 
-  onSuccess(err: User) {
-
+  onSuccess(sess: Session) {
+    this.snackBar.open('logged in', 'dismiss');
   }
 
   onFail(err: Response) {

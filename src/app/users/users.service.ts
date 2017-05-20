@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Api } from './../api'
-import { User } from './models'
+import { User, Session } from './models'
 
 export interface SignUpParams {
   name: string;
@@ -12,9 +12,15 @@ export interface SignUpParams {
   password: string;
 }
 
+export interface SignInParams {
+  email: string;
+  password: string;
+}
+
 @Injectable()
 export class UsersService extends Api {
   private baseEndpoint = this.baseUrl + "/users"
+  private sessionEndpoint = this.baseUrl + "/sessions"
 
   constructor(http: Http) {
     super(http)
@@ -27,7 +33,14 @@ export class UsersService extends Api {
       .catch(this.handleError)
   }
 
-  handleError(err: Response, o: Observable<User>): Observable<any> {
+  signIn(data: SignInParams): Observable<Session> {
+    return this.http
+      .post(this.sessionEndpoint, data, this.defaultHeaders)
+      .map(res => new Session(res.json()))
+      .catch(this.handleError)
+  }
+
+  handleError(err: Response, o: Observable<User | Session>): Observable<any> {
     const error = super.handleBasicErrors(err)
     return Observable.throw(error);
   }
