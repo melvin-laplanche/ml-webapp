@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Angular Material
 import { MdInputModule, MdCardModule, MdButtonModule } from '@angular/material';
-import { MdSnackBarModule } from '@angular/material';
+import { MdSnackBarModule, MdProgressBarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Router
@@ -35,6 +35,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
     MdSnackBarModule,
     FlexLayoutModule,
     CenteredBoxModule,
+    MdProgressBarModule,
   ],
   exports: [
     RouterModule

@@ -10,3 +10,12 @@
     }
   }
 }
+
+md-progress-bar {
+  position: relative;
+  top: -24px;
+  left: -24px;
+  width: calc(100% + 48px);
+
+  height: 2px;
+}
