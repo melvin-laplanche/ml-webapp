@@ -10,6 +10,7 @@ export class SignUpGuard implements CanActivate {
   constructor(private store: Store<AppState>) { }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.store.select('userState')
+    // If the user is logged then we return false
+    return this.store.select('userState').map((isLogged) => !isLogged)
   }
 }

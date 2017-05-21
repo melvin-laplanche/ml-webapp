@@ -35,13 +35,11 @@ import { SignInComponent } from './sign-in/sign-in.component';
     MdSnackBarModule,
     FlexLayoutModule,
     CenteredBoxModule,
-    SignInGuard,
-    SignUpGuard,
   ],
   exports: [
     RouterModule
   ],
   declarations: [SignUpComponent, SignInComponent],
-  providers: [UsersService]
+  providers: [UsersService, SignUpGuard, SignInGuard]
 })
 export class UsersModule { }
