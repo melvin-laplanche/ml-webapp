@@ -13,10 +13,15 @@ import { usersRoutes } from './users.routes';
 
 import { CenteredBoxModule } from '../shared/centered-box/centered-box.module';
 
+// Guards
+import { SignInGuard } from './sign-in/sign-in.guard';
+import { SignUpGuard } from './sign-up/sign-up.guard';
+
 // Users components
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UsersService } from './users.service';
 import { SignInComponent } from './sign-in/sign-in.component';
+
 
 @NgModule({
   imports: [
@@ -29,7 +34,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
     MdButtonModule,
     MdSnackBarModule,
     FlexLayoutModule,
-    CenteredBoxModule
+    CenteredBoxModule,
+    SignInGuard,
+    SignUpGuard,
   ],
   exports: [
     RouterModule
