@@ -24,4 +24,8 @@ export class AppComponent {
   ngOnInit() {
 
   }
+
+  signOut() {
+    this.sessionService.signUserOut();
+  }
 }

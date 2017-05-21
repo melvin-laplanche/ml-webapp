@@ -17,7 +17,7 @@
       </ng-container>
 
       <ng-container *ngIf="userState$ | async">
-        <a md-list-item routerLink="/users/sign-out" routerLinkActive="active">Sign Out</a>
+        <md-list-item (click)="signOut()">Sign Out</md-list-item>
       </ng-container>
     </md-nav-list>
   </md-sidenav>
