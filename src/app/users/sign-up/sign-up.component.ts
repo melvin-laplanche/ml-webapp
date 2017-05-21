@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
@@ -20,7 +21,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userApi: UsersService,
-    private snackBar: MdSnackBar
+    private snackBar: MdSnackBar,
+    private router: Router
   ) {
     this.signUpForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(255)]],
@@ -51,7 +53,15 @@ export class SignUpComponent implements OnInit {
   }
 
   onSuccess(err: User) {
-    // login user
+    this.snackBar.open('Account created', 'dismiss', appConfig.snackBarDefault);
+
+    this.userApi.signIn({
+      email: this.signUpForm.controls['email'].value,
+      password: this.signUpForm.controls['password'].value,
+    }).subscribe(
+      session => this.router.navigateByUrl('/'),
+      err => this.router.navigateByUrl('/users/sign-in')
+      )
   }
 
   onFail(err: Response) {
