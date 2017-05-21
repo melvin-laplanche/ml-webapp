@@ -7,6 +7,8 @@ import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './app.reducer';
 
+import { SessionModule } from './session/session.module';
+
 // Angular material
 import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +38,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MdSidenavModule,
     MdButtonModule,
     MdListModule,
-    StoreModule.provideStore(appReducer)
+    StoreModule.provideStore(appReducer),
+    SessionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

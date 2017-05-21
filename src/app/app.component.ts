@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { AppState } from './app.state';
+import { SessionService } from './session/session.service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -13,7 +14,10 @@ import { Observable } from 'rxjs/Observable';
 export class AppComponent {
   public userState$: Observable<boolean>
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private sessionService: SessionService // needed to auto-login the user
+  ) {
     this.userState$ = this.store.select('userState');
   }
 

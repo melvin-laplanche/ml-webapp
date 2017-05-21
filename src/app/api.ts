@@ -1,5 +1,6 @@
 import { Http, Response } from '@angular/http';
 import { environment } from '../environments/environment';
+import { SessionService } from './session/session.service'
 
 export class ApiError {
   httpCode: number = 0;
@@ -29,7 +30,10 @@ export class ApiError {
 export class Api {
   protected baseUrl = environment.baseAPI;
 
-  constructor(protected http: Http) { }
+  constructor(
+    protected http: Http,
+    protected sessionService: SessionService
+  ) { }
 
   get defaultHeaders(): Headers {
     let headers = new Headers();

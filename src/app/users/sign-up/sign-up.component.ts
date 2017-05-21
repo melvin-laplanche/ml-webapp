@@ -5,9 +5,8 @@ import { CustomValidators } from 'ng2-validation';
 import { MdSnackBar } from '@angular/material';
 import { appConfig } from '../../app.config';
 
-
 import { UsersService } from '../users.service';
-import { User } from '../models';
+import { User } from '../users.model';
 
 @Component({
   selector: 'app-blog-sign-up',
@@ -52,7 +51,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSuccess(err: User) {
-
+    // login user
   }
 
   onFail(err: Response) {

@@ -1,6 +1,6 @@
 export class Session {
   private user_id: string
-  private token: string
+  public token: string
 
   constructor(payload: Session) {
     Object.assign(this, payload);

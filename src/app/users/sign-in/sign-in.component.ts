@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { Router } from '@angular/router';
 
 import { MdSnackBar } from '@angular/material';
 
@@ -11,7 +12,6 @@ import { SIGN_IN } from '../users.actions';
 import { appConfig } from '../../app.config';
 
 import { UsersService } from '../users.service';
-import { Session } from '../models';
 
 @Component({
   selector: 'app-sign-in',
@@ -26,7 +26,8 @@ export class SignInComponent {
     private fb: FormBuilder,
     private userApi: UsersService,
     private snackBar: MdSnackBar,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.email]],
@@ -48,9 +49,9 @@ export class SignInComponent {
     )
   }
 
-  onSuccess(sess: Session) {
-    this.store.dispatch({ type: SIGN_IN })
+  onSuccess(sess: any) {
     this.snackBar.open('logged in', 'dismiss', appConfig.snackBarDefault);
+    this.router.navigateByUrl('/');
   }
 
   onFail(err: Response) {

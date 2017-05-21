@@ -4,7 +4,9 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Api } from './../api'
-import { User, Session } from './models'
+import { User } from './users.model'
+import { Session } from '../session/session.model'
+import { SessionService } from '../session/session.service'
 
 export interface SignUpParams {
   name: string;
@@ -17,13 +19,15 @@ export interface SignInParams {
   password: string;
 }
 
+export const LS_USER_SESSION = 'user_session';
+
 @Injectable()
 export class UsersService extends Api {
   private baseEndpoint = this.baseUrl + "/users"
   private sessionEndpoint = this.baseUrl + "/sessions"
 
-  constructor(http: Http) {
-    super(http)
+  constructor(http: Http, sessionService: SessionService) {
+    super(http, sessionService)
   }
 
   signUp(data: SignUpParams): Observable<User> {
@@ -37,6 +41,7 @@ export class UsersService extends Api {
     return this.http
       .post(this.sessionEndpoint, data, this.defaultHeaders)
       .map(res => new Session(res.json()))
+      .do(session => this.sessionService.signUserIn(session))
       .catch(this.handleError)
   }
 
