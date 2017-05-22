@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/publish';
 
 import { Api } from './../api'
 import { User } from './users.model'
 import { Session } from '../session/session.model'
 import { SessionService } from '../session/session.service'
 
-import 'rxjs/add/operator/publish';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
+import { userUpdatedAction } from '../app.actions';
 
 export interface SignUpParams {
   name: string;
@@ -28,13 +31,13 @@ export class UsersService extends Api {
   private baseEndpoint = this.baseUrl + "/users"
   private sessionEndpoint = this.baseUrl + "/sessions"
 
-  constructor(http: Http, sessionService: SessionService) {
-    super(http, sessionService)
+  constructor(http: Http, sessionService: SessionService, store: Store<AppState>) {
+    super(http, sessionService, store)
   }
 
   signUp(data: SignUpParams): Observable<User> {
     return this.http
-      .post(this.baseEndpoint, data, this.defaultHeaders)
+      .post(this.baseEndpoint, data, this.defaultOpts)
       .map(res => new User(res.json()))
       .share()
       .catch(this.handleError)
@@ -42,7 +45,7 @@ export class UsersService extends Api {
 
   signIn(data: SignInParams): Observable<Session> {
     return this.http
-      .post(this.sessionEndpoint, data, this.defaultHeaders)
+      .post(this.sessionEndpoint, data, this.defaultOpts)
       .map(res => new Session(res.json()))
       .do(session => this.sessionService.signUserIn(session))
       .share()
@@ -57,6 +60,17 @@ export class UsersService extends Api {
       .do(() => this.sessionService.signUserOut())
       .share()
       .catch(err => this.fail(err))
+  }
+
+  refreshUserData(userId: string): Observable<User> {
+    const endpoint = this.baseEndpoint + `/` + userId;
+
+    return this.http
+      .get(endpoint, this.defaultOpts)
+      .map(res => new User(res.json()))
+      .do(user => this.store.dispatch(userUpdatedAction(user)))
+      .share()
+      .catch(this.fail)
   }
 
   fail(err: any): Observable<any> {

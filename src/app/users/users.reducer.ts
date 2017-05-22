@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 
-import { SIGN_IN, SIGN_OUT } from './users.actions';
+import { SIGN_IN, SIGN_OUT, USER_UPDATED } from './users.actions';
+import { User } from './users.model';
 
 function reducerStatus(state: boolean = false, action: Action) {
   switch (action.type) {
@@ -13,4 +14,16 @@ function reducerStatus(state: boolean = false, action: Action) {
   }
 }
 
-export const usersReducer = { userState: reducerStatus };
+function reducerData(state: User = null, action: Action) {
+  switch (action.type) {
+    case USER_UPDATED:
+      return action.payload;
+    default:
+      return state
+  }
+}
+
+export const usersReducer = {
+  userState: reducerStatus,
+  userData: reducerData,
+};

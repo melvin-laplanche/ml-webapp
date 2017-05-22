@@ -1,6 +1,10 @@
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { environment } from '../environments/environment';
+
 import { SessionService } from './session/session.service'
+
+import { Store } from '@ngrx/store';
+import { AppState } from './app.state';
 
 export class ApiError {
   httpCode: number = 0;
@@ -32,7 +36,8 @@ export class Api {
 
   constructor(
     protected http: Http,
-    protected sessionService: SessionService
+    protected sessionService: SessionService,
+    protected store: Store<AppState>
   ) { }
 
   get defaultHeaders(): Headers {
