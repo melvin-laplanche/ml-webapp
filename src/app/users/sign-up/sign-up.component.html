@@ -19,6 +19,7 @@
             <input mdInput type="email" formControlName="email" placeholder="Email" required />
             <md-error *ngIf="signUpForm.get('email').hasError('email')" i18n>Not a valid email address</md-error>
             <md-error *ngIf="signUpForm.get('email').hasError('minlength')" i18n>This field is limited to 255 chars</md-error>
+            <md-error *ngIf="signUpForm.get('email').hasError('conflict')" i18n>This email address is already in use</md-error>
           </md-input-container>
 
           <md-input-container>
