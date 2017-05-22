@@ -19,7 +19,6 @@ import { SignUpGuard } from './sign-up/sign-up.guard';
 
 // Users components
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { UsersService } from './users.service';
 import { SignInComponent } from './sign-in/sign-in.component';
 
 
@@ -41,6 +40,6 @@ import { SignInComponent } from './sign-in/sign-in.component';
     RouterModule
   ],
   declarations: [SignUpComponent, SignInComponent],
-  providers: [UsersService, SignUpGuard, SignInGuard]
+  providers: [SignUpGuard, SignInGuard]
 })
 export class UsersModule { }

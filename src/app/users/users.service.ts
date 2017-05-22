@@ -8,6 +8,8 @@ import { User } from './users.model'
 import { Session } from '../session/session.model'
 import { SessionService } from '../session/session.service'
 
+import 'rxjs/add/operator/publish';
+
 export interface SignUpParams {
   name: string;
   email: string;
@@ -34,6 +36,7 @@ export class UsersService extends Api {
     return this.http
       .post(this.baseEndpoint, data, this.defaultHeaders)
       .map(res => new User(res.json()))
+      .share()
       .catch(this.handleError)
   }
 
@@ -42,10 +45,26 @@ export class UsersService extends Api {
       .post(this.sessionEndpoint, data, this.defaultHeaders)
       .map(res => new Session(res.json()))
       .do(session => this.sessionService.signUserIn(session))
+      .share()
       .catch(this.handleError)
   }
 
-  handleError(err: Response, o: Observable<User | Session>): Observable<any> {
+  signOut(): Observable<Response> {
+    const endpoint = this.sessionEndpoint + `/` + this.sessionService.getSession().token;
+
+    return this.http
+      .delete(endpoint, this.defaultOpts)
+      .do(() => this.sessionService.signUserOut())
+      .share()
+      .catch(err => this.fail(err))
+  }
+
+  fail(err: any): Observable<any> {
+    console.error(err)
+    return Observable.throw(err);
+  }
+
+  handleError(err: Response, o: any): Observable<any> {
     const error = super.handleBasicErrors(err)
     return Observable.throw(error);
   }

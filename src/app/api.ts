@@ -1,4 +1,4 @@
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { environment } from '../environments/environment';
 import { SessionService } from './session/session.service'
 
@@ -38,7 +38,21 @@ export class Api {
   get defaultHeaders(): Headers {
     let headers = new Headers();
     headers.append('Accept', 'application/json');
+
+    // User credentials
+    const session = this.sessionService.getSession();
+    if (session != null) {
+      const token = window.btoa(`${session.userId}:${session.token}`);
+      headers.append('Authorization', `basic ${token}`);
+    }
+
     return headers;
+  }
+
+  get defaultOpts(): RequestOptions {
+    return new RequestOptions({
+      headers: this.defaultHeaders,
+    })
   }
 
   protected handleBasicErrors(err: Response): ApiError {

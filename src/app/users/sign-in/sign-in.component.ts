@@ -38,19 +38,17 @@ export class SignInComponent {
   onSubmit() {
     this.submitted = true;
 
-    let session$ = this.userApi.signIn({
+    this.userApi.signIn({
       email: this.signInForm.controls['email'].value,
       password: this.signInForm.controls['password'].value,
-    })
-
-    session$.subscribe(
+    }).subscribe(
       s => this.onSuccess(s),
       err => this.onFail(err)
-    )
+      )
   }
 
   onSuccess(sess: any) {
-    this.snackBar.open('logged in', 'dismiss', appConfig.snackBarDefault);
+    this.snackBar.open('Signed in', 'dismiss', appConfig.snackBarDefault);
     this.router.navigateByUrl('/');
   }
 

@@ -23,6 +23,8 @@ import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { UsersService } from './users/users.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     StoreModule.provideStore(appReducer),
     SessionModule,
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

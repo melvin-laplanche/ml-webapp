@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './app.state';
 import { SessionService } from './session/session.service';
+import { UsersService } from './users/users.service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -16,16 +17,16 @@ export class AppComponent {
 
   constructor(
     private store: Store<AppState>,
-    private sessionService: SessionService // needed to auto-login the user
+    private sessionService: SessionService, // needed to auto-login the user
+    private usersService: UsersService
   ) {
     this.userState$ = this.store.select('userState');
   }
 
   ngOnInit() {
-
   }
 
   signOut() {
-    this.sessionService.signUserOut();
+    this.usersService.signOut().subscribe()
   }
 }

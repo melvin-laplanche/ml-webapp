@@ -44,12 +44,10 @@ export class SignUpComponent implements OnInit {
       name: this.signUpForm.controls['name'].value,
       email: this.signUpForm.controls['email'].value,
       password: this.signUpForm.controls['password'].value,
-    })
-
-    user$.subscribe(
+    }).subscribe(
       u => this.onSuccess(u),
       err => this.onFail(err)
-    )
+      )
   }
 
   onSuccess(err: User) {
