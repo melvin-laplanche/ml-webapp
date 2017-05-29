@@ -1,12 +1,7 @@
-md-sidenav {
-  width: 280px;
-}
-
-.sidenav-content {
+ .sidenav-content {
   height: 100vh;
 }
 
-md-nav-list a.active {
-  font-weight: 500;
-  background: rgba(0, 0, 0, 0.04);
+md-sidenav {
+  width: 280px;
 }

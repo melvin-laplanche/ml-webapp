@@ -1,0 +1,33 @@
+<md-toolbar color="primary">
+  <div class="start">
+    <button md-icon-button (click)="onMenuOpen.emit()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+
+    <span>FirstRow</span>
+
+    <ng-content select="[start]"></ng-content>
+  </div>
+
+  <div class="middle">
+    <md-input-container *ngIf="hasSearchBar" class="desktop-search-bar">
+      <md-icon mdPrefix>search</md-icon>
+      <input mdInput (keydown)="searchDataUpdated($event)">
+    </md-input-container>
+  </div>
+
+  <div class="end">
+    <button md-button class="phone-search-toggle-button" *ngIf="hasSearchBar" (click)="phoneSearchBarOpened=!phoneSearchBarOpened">
+       <md-icon mdPrefix>search</md-icon>
+     </button>
+
+    <ng-content select="[end]"></ng-content>
+  </div>
+
+  <md-toolbar-row class="phone-search-bar" *ngIf="phoneSearchBarOpened && hasSearchBar">
+    <md-input-container>
+      <md-icon mdPrefix>search</md-icon>
+      <input mdInput (keydown)="searchDataUpdated($event)">
+    </md-input-container>
+  </md-toolbar-row>
+</md-toolbar>

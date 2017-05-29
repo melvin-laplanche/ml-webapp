@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { AppState } from './app.state';
@@ -39,12 +39,5 @@ export class AppComponent {
         this.usersService.refreshUserData(session.userId).subscribe()
       }
     })
-  }
-
-  ngOnInit() {
-  }
-
-  signOut() {
-    this.usersService.signOut().subscribe()
   }
 }

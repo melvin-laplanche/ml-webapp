@@ -5,10 +5,6 @@ import { Router } from '@angular/router';
 
 import { MdSnackBar } from '@angular/material';
 
-import { Store } from '@ngrx/store';
-import { AppState } from '../../app.state';
-import { SIGN_IN } from '../users.actions';
-
 import { appConfig } from '../../app.config';
 
 import { UsersService } from '../users.service';
@@ -26,7 +22,6 @@ export class SignInComponent {
     private fb: FormBuilder,
     private userApi: UsersService,
     private snackBar: MdSnackBar,
-    private store: Store<AppState>,
     private router: Router
   ) {
     this.signInForm = this.fb.group({

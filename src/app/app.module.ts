@@ -12,7 +12,7 @@ import { SessionModule } from './session/session.module';
 // Angular material
 import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdToolbarModule, MdSidenavModule } from '@angular/material';
+import { MdSidenavModule, MdToolbarModule } from '@angular/material';
 import { MdButtonModule, MdListModule } from '@angular/material';
 
 // Router
@@ -24,11 +24,13 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { UsersService } from './users/users.service';
+import { LeftDrawerComponent } from './left-drawer/left-drawer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    LeftDrawerComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -36,10 +38,10 @@ import { UsersService } from './users/users.service';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdToolbarModule,
     MdSidenavModule,
     MdButtonModule,
     MdListModule,
+    MdToolbarModule,
     StoreModule.provideStore(appReducer),
     SessionModule,
   ],

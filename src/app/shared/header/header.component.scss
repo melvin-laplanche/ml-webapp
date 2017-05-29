@@ -1,0 +1,84 @@
+@import "../../../media-queries.scss";
+
+// position of the 3 parts of the main toolbar
+
+.start {
+  flex: 1;
+  display: flex;
+
+  & > * {
+    align-self: center;
+  }
+}
+
+.middle {
+  flex: 2;
+  max-width: 800px;
+}
+
+.end {
+  flex: 1;
+
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+}
+
+// Phone setting for the search-bar
+
+.phone-search-toggle-button {
+  display: inline-block;
+
+  $hz-padding-size: 4px;
+  padding: 0 $hz-padding-size;
+  min-width: 24 + $hz-padding-size*2; // icon size + left padding + right padding
+}
+
+.phone-search-bar {
+  md-input-container {
+    width: 100%;
+  }
+}
+
+.desktop-search-bar {
+  display: none;
+}
+
+// Search bar
+
+md-input-container /deep/ .mat-input-wrapper {
+  background-color: rgba(255, 255, 255, 0.27);
+  padding-bottom: 0;
+
+  .mat-input-underline {
+    display: none;
+  }
+
+  .mat-input-prefix {
+    position: relative;
+    top: -3px;
+  }
+
+  md-icon {
+    padding: 0 14px;
+  }
+
+  input {
+    height: 40px;
+    font-weight: 100;
+    font-size: 18px;
+  }
+}
+
+// Tablet+ settings for the search bar
+
+@include  respond-to(tablet) {
+  .phone-search-toggle-button {
+    display: none;
+  }
+
+  .desktop-search-bar {
+    display: inline-block;
+    width: 100%;
+  }
+}
