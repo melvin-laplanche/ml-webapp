@@ -11,16 +11,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { usersRoutes } from './users.routes';
 
-import { CenteredBoxModule } from '../shared/centered-box/centered-box.module';
+import { CenteredBoxModule } from '../shared/centered-box';
+import { HeaderModule } from '../shared/header';
 
-// Guards
-import { SignInGuard } from './sign-in/sign-in.guard';
-import { SignUpGuard } from './sign-up/sign-up.guard';
-
-// Users components
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-
+// Guards & Components
+import { SignInGuard, SignInComponent } from './sign-in';
+import { SignUpGuard, SignUpComponent } from './sign-up';
+import { UsersComponent } from './users.component';
 
 @NgModule({
   imports: [
@@ -35,11 +32,12 @@ import { SignInComponent } from './sign-in/sign-in.component';
     FlexLayoutModule,
     CenteredBoxModule,
     MdProgressBarModule,
+    HeaderModule,
   ],
   exports: [
     RouterModule
   ],
-  declarations: [SignUpComponent, SignInComponent],
+  declarations: [SignUpComponent, SignInComponent, UsersComponent],
   providers: [SignUpGuard, SignInGuard]
 })
 export class UsersModule { }

@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 
 import { appConfig } from '../../app.config';
-
 import { UsersService } from '../users.service';
 
 @Component({

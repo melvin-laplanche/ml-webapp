@@ -1,10 +1,10 @@
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
-import { SessionService } from './session/session.service'
+import { SessionService } from './../session'
 
 import { Store } from '@ngrx/store';
-import { AppState } from './app.state';
+import { AppState } from './..';
 
 export class ApiError {
   httpCode: number = 0;

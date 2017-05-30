@@ -7,7 +7,8 @@ import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './app.reducer';
 
-import { SessionModule } from './session/session.module';
+import { SessionModule } from './session';
+import { UsersService } from './users';
 
 // Angular material
 import 'hammerjs';
@@ -21,10 +22,8 @@ import { appRoutes } from './app.routes';
 
 // App components
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-import { UsersService } from './users/users.service';
-import { LeftDrawerComponent } from './left-drawer/left-drawer.component';
+import { PageNotFoundComponent } from './page-not-found';
+import { LeftDrawerComponent } from './left-drawer';
 
 @NgModule({
   declarations: [

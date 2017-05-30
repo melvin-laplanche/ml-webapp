@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 })
 export class HeaderComponent implements OnInit {
-  @Input() hasSearchBar: boolean = true;
+  @Input() hasSearchBar: boolean = false;
   @Output("onMenuOpen") onMenuOpen = new EventEmitter();
 
   // Triggered when the user submit the search form

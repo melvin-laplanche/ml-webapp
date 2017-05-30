@@ -2,16 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/publish';
 
-import { Api } from './../api'
-import { User } from './users.model'
-import { Session } from '../session/session.model'
-import { SessionService } from '../session/session.service'
+import { Api } from './../tools'
+import { Session, SessionService } from '../session'
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { userUpdatedAction } from '../app.actions';
+import { User, userUpdatedAction } from './';
 
 export interface SignUpParams {
   name: string;
