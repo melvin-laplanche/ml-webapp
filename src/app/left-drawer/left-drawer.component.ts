@@ -9,6 +9,7 @@ import { closeMenuAction } from './left-drawer.actions';
 
 import { User } from '../users/users.model';
 import { UsersService } from '../users/users.service';
+import { BaseComponent } from '../tools';
 
 import "rxjs/add/operator/takeWhile";
 
@@ -17,23 +18,22 @@ import "rxjs/add/operator/takeWhile";
   templateUrl: './left-drawer.component.html',
   styleUrls: ['./left-drawer.component.scss']
 })
-export class LeftDrawerComponent implements OnInit {
+export class LeftDrawerComponent extends BaseComponent implements OnInit {
   public userState$: Observable<boolean>;
   public menuState$: Observable<boolean>;
   @Input() sidenav: MdSidenav;
 
-  private _active: boolean = true;
-
   constructor(
-    private store: Store<AppState>,
+    protected store: Store<AppState>,
     private usersService: UsersService
   ) {
-    this.userState$ = this.store.select('userState').takeWhile(() => this._active);
-    this.menuState$ = this.store.select('menuState').takeWhile(() => this._active);
+    super(store);
+    this.userState$ = this.select('userState');
+    this.menuState$ = this.select('menuState');
   }
 
   ngOnInit() {
-    this.sidenav.onClose.takeWhile(() => this._active).subscribe(() => {
+    this.sidenav.onClose.takeWhile(() => this._isActive).subscribe(() => {
       this.store.dispatch(closeMenuAction());
     });
 
@@ -44,10 +44,6 @@ export class LeftDrawerComponent implements OnInit {
         this.sidenav.close();
       }
     });
-  }
-
-  OnDestroy() {
-    this._active = false;
   }
 
   signOut() {
