@@ -11,13 +11,13 @@
         <div fxFlex fxLayout="column">
 
           <md-input-container>
-            <input mdInput type="email" formControlName="email" placeholder="Email" required />
+            <input mdInput type="email" formControlName="email" placeholder="Email" required class="qa-email" />
             <md-error *ngIf="signInForm.get('email').hasError('email')" i18n>Not a valid email address</md-error>
             <md-error *ngIf="signInForm.get('email').hasError('minlength')" i18n>This field is limited to 255 chars</md-error>
           </md-input-container>
 
           <md-input-container>
-            <input mdInput type="password" formControlName="password" placeholder="Password" required />
+            <input mdInput type="password" formControlName="password" placeholder="Password" required class="qa-password" />
             <md-error *ngIf="signInForm.get('password').hasError('required')" i18n>This field is required</md-error>
             <md-error *ngIf="signInForm.get('password').hasError('minlength')" i18n>This field is limited to 255 chars</md-error>
           </md-input-container>
@@ -26,7 +26,10 @@
       </md-card-content>
 
       <md-card-actions align="end">
-        <button md-button color="accent" [disabled]="submitted || signInForm.pristine || signInForm.invalid" type="submit" i18n="sign in action">Sign In</button>
+        <button md-button color="accent" [disabled]="submitted || signInForm.pristine || signInForm.invalid" type="submit" class="qa-submit"
+          i18n="sign in action">
+          Sign In
+          </button>
       </md-card-actions>
     </form>
   </md-card>
