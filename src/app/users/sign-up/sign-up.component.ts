@@ -6,9 +6,9 @@ import { CustomValidators } from 'ng2-validation';
 import { MdSnackBar } from '@angular/material';
 import { appConfig } from '../../app.config';
 
-import { User } from '../';
+import { User } from '../users.model';
 import { UsersService } from '../users.service';
-import { ApiError } from '../../tools';
+import { ApiError } from '../../tools/Api';
 
 @Component({
   selector: 'app-blog-sign-up',

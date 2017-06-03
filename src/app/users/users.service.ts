@@ -3,12 +3,13 @@ import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
-import { Api } from './../tools'
+import { Api } from './../tools/Api'
 import { Session, SessionService } from '../session'
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { User, userUpdatedAction } from './';
+import { User } from './users.model';
+import { userUpdatedAction } from './users.actions';
 
 export interface SignUpParams {
   name: string;

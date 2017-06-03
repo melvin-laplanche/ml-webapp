@@ -10,33 +10,35 @@
       <md-card-content>
         <div fxFlex fxLayout="column">
           <md-input-container>
-            <input mdInput type="text" formControlName="name" placeholder="Name" required />
+            <input mdInput type="text" formControlName="name" placeholder="Name" required class="qa-name" />
             <md-error *ngIf="signUpForm.get('name').hasError('required')" i18n>This field is required</md-error>
             <md-error *ngIf="signUpForm.get('name').hasError('minlength')" i18n>This field is limited to 255 chars</md-error>
           </md-input-container>
 
           <md-input-container>
-            <input mdInput type="email" formControlName="email" placeholder="Email" required />
+            <input mdInput type="email" formControlName="email" placeholder="Email" required class="qa-email" />
             <md-error *ngIf="signUpForm.get('email').hasError('email')" i18n>Not a valid email address</md-error>
             <md-error *ngIf="signUpForm.get('email').hasError('minlength')" i18n>This field is limited to 255 chars</md-error>
             <md-error *ngIf="signUpForm.get('email').hasError('conflict')" i18n>This email address is already in use</md-error>
           </md-input-container>
 
           <md-input-container>
-            <input mdInput type="password" formControlName="password" placeholder="Password" required />
+            <input mdInput type="password" formControlName="password" placeholder="Password" required class="qa-password" />
             <md-error *ngIf="signUpForm.get('password').hasError('required')" i18n>This field is required</md-error>
             <md-error *ngIf="signUpForm.get('password').hasError('minlength')" i18n>This field is limited to 255 chars</md-error>
           </md-input-container>
 
           <md-input-container>
-            <input mdInput type="password" formControlName="passwordAgain" placeholder="Password (again)" required />
+            <input mdInput type="password" formControlName="passwordAgain" placeholder="Password (again)" required class="qa-password-again"
+            />
             <md-error *ngIf="signUpForm.get('passwordAgain').hasError('equalTo')" i18n>Passwords don't match</md-error>
           </md-input-container>
         </div>
       </md-card-content>
 
       <md-card-actions align="end">
-        <button md-button color="accent" [disabled]="submitted || signUpForm.pristine || signUpForm.invalid" type="submit" i18n="sign up action">Sign Up</button>
+        <button md-button color="accent" [disabled]="submitted || signUpForm.pristine || signUpForm.invalid" type="submit" class="qa-submit"
+          i18n="sign up action">Sign Up</button>
       </md-card-actions>
     </form>
   </md-card>
