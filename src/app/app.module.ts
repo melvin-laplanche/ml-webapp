@@ -38,7 +38,6 @@ import { LeftDrawerComponent } from './left-drawer';
     HttpModule,
     BrowserAnimationsModule,
     MdSidenavModule,
-    MdButtonModule,
     MdListModule,
     MdToolbarModule,
     StoreModule.provideStore(appReducer),
