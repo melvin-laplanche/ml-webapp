@@ -23,6 +23,6 @@ export class BlogComponent implements OnInit {
   }
 
   onSearch(query: string) {
-    console.log("searched: " + query);
+    console.log('searched: ' + query);
   }
 }

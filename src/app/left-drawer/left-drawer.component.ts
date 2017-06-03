@@ -11,7 +11,7 @@ import { User } from '../users/users.model';
 import { UsersService } from '../users/users.service';
 import { BaseComponent } from '../tools';
 
-import "rxjs/add/operator/takeWhile";
+import 'rxjs/add/operator/takeWhile';
 
 @Component({
   selector: 'app-left-drawer',

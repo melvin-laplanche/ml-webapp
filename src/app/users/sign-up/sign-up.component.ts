@@ -41,7 +41,7 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    let user$ = this.userApi.signUp({
+    this.userApi.signUp({
       name: this.signUpForm.controls['name'].value,
       email: this.signUpForm.controls['email'].value,
       password: this.signUpForm.controls['password'].value,
@@ -51,7 +51,7 @@ export class SignUpComponent implements OnInit {
       )
   }
 
-  onSuccess(err: User) {
+  onSuccess(_err: User) {
     this.snackBar.open('Account created', 'dismiss', appConfig.snackBarDefault);
 
     this.userApi.signIn({
@@ -64,8 +64,8 @@ export class SignUpComponent implements OnInit {
   }
 
   onFail(err: ApiError) {
-    if (err.httpCode == 409) {
-      this.signUpForm.controls['email'].setErrors({ "conflict": true })
+    if (err.httpCode === 409) {
+      this.signUpForm.controls['email'].setErrors({ 'conflict': true })
     } else {
       this.snackBar.open('Something wrong happened', 'dismiss', appConfig.snackBarDefault);
     }

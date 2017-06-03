@@ -26,8 +26,8 @@ export const LS_USER_SESSION = 'user_session';
 
 @Injectable()
 export class UsersService extends Api {
-  private baseEndpoint = this.baseUrl + "/users"
-  private sessionEndpoint = this.baseUrl + "/sessions"
+  private baseEndpoint = this.baseUrl + '/users'
+  private sessionEndpoint = this.baseUrl + '/sessions'
 
   constructor(http: Http, sessionService: SessionService, store: Store<AppState>) {
     super(http, sessionService, store)

@@ -50,7 +50,7 @@ describe('HeaderComponent', () => {
   });
 
   it('should raise onMenuOpen event when clicked', () => {
-    let menuIsOpen: boolean = false;
+    let menuIsOpen = false;
     component.onMenuOpen.subscribe(() => menuIsOpen = true);
 
     const menu = fixture.debugElement.query(By.css('.qa-menu-button'));
@@ -58,13 +58,13 @@ describe('HeaderComponent', () => {
     expect(menuIsOpen).toBe(true);
   });
 
-  it('should raise onSearchEvent event when a search occurs', () => {
-    let searchData: string = "";
-    component.onSearchEvent.subscribe((data: string) => searchData = data);
+  it('should raise onSearch event when a search occurs', () => {
+    let searchData = '';
+    component.onSearch.subscribe((data: string) => searchData = data);
 
-    const expectedData = "search query"
+    const expectedData = 'search query'
     component.searchForm.controls['query'].setValue(expectedData);
-    component.onSearch()
+    component.search()
     expect(searchData).toBe(expectedData);
   });
 });

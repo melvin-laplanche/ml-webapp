@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import "rxjs/add/operator/takeWhile";
+import 'rxjs/add/operator/takeWhile';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
@@ -9,7 +9,7 @@ import { AppState } from '../app.state';
 @Component({
 })
 export class BaseComponent implements OnDestroy {
-  protected _isActive: boolean = true;
+  protected _isActive = true;
 
   constructor(
     protected store: Store<AppState>

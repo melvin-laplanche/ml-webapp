@@ -9,7 +9,6 @@ class StoreStub {
 }
 
 import { SignUpGuard } from './sign-up.guard';
-
 describe('SignUpGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({

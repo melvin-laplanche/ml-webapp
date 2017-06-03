@@ -49,13 +49,13 @@ export class SessionService {
     try {
       const dataStr = localStorage.getItem(LS_USER_SESSION);
       if (!dataStr) {
-        throw "no session found";
+        throw new Error('no session found');
       }
 
       const session = new Session(JSON.parse(dataStr));
       // Let's soft check that the data aren't fake
-      if (session.userId == "" || session.token == "") {
-        throw "Invalid Data";
+      if (session.userId === '' || session.token === '') {
+        throw new Error('Invalid Data');
       }
       return session;
     } catch (err) {

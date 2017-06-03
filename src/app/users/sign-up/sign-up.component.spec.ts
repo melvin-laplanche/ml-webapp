@@ -33,20 +33,20 @@ class UsersServiceStub {
   }));
 
   signIn(data: SignUpParams): Observable<any> {
-    if (data.email == TRIGGER_SIGN_IN_FAILURE) {
+    if (data.email === TRIGGER_SIGN_IN_FAILURE) {
       return Observable.throw('err');
     } else {
-      return Observable.of("success");
+      return Observable.of('success');
     }
   }
 
   signUp(data: SignUpParams): Observable<any> {
-    if (data.email == TRIGGER_EMAIL_CONFLICT) {
+    if (data.email === TRIGGER_EMAIL_CONFLICT) {
       return Observable.throw(new ApiError(this.fakeConflictResponse));
-    } else if (data.email == TRIGGER_SERVER_ERROR) {
+    } else if (data.email === TRIGGER_SERVER_ERROR) {
       return Observable.throw(new ApiError(this.fakeInternalErrorResponse));
     } {
-      return Observable.of("success");
+      return Observable.of('success');
     }
   }
 }
@@ -61,10 +61,10 @@ class RouterStub {
   navigateByUrl(url: string) { return url; }
 }
 
-const TRIGGER_EMAIL_CONFLICT = "trigger.conflict@domain.tld";
-const TRIGGER_SERVER_ERROR = "trigger.server.error@domain.tld";
-const TRIGGER_FULL_SUCCESS = "valid@domain.tld";
-const TRIGGER_SIGN_IN_FAILURE = "trigger.failure@domain.tld";
+const TRIGGER_EMAIL_CONFLICT = 'trigger.conflict@domain.tld';
+const TRIGGER_SERVER_ERROR = 'trigger.server.error@domain.tld';
+const TRIGGER_FULL_SUCCESS = 'valid@domain.tld';
+const TRIGGER_SIGN_IN_FAILURE = 'trigger.failure@domain.tld';
 
 describe('SignUpComponent', () => {
   let component: SignUpComponent;

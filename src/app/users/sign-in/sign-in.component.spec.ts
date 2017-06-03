@@ -1,6 +1,10 @@
 import { tick, async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
+import { Observable } from 'rxjs/Observable';
+
+// Module needed
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdInputModule, MdCardModule, MdButtonModule } from '@angular/material';
 import { MdSnackBarModule, MdProgressBarModule } from '@angular/material';
@@ -8,34 +12,34 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CenteredBoxModule } from '../../shared/centered-box';
 import { HeaderModule } from '../../shared/header';
 
-import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+// Stubs
 
-import { SignInComponent } from './sign-in.component';
-
-import { Observable } from 'rxjs/Observable';
 import { UsersService, SignInParams } from '../users.service';
-
 class UsersServiceStub {
   signIn(data: SignInParams): Observable<any> {
-    if (data.email == 'trigger.failure@domain.tld') {
+    if (data.email === 'trigger.failure@domain.tld') {
       return Observable.throw('err');
     } else {
-      return Observable.of("data");
+      return Observable.of('data');
     }
   }
 }
 
+import { MdSnackBar } from '@angular/material';
 class MdSnackBarStub {
   open(title: string, action: string, opt: any) {
 
   }
 }
 
+import { Router } from '@angular/router';
 class RouterStub {
   navigateByUrl(url: string) { return url; }
 }
 
+// tests
+
+import { SignInComponent } from './sign-in.component';
 describe('SignInComponent', () => {
   let component: SignInComponent;
   let fixture: ComponentFixture<SignInComponent>;

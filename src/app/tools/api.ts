@@ -7,8 +7,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from './..';
 
 export class ApiError {
-  httpCode: number = 0;
-  message: string = "Unknown Client Error";
+  httpCode = 0;
+  message = 'Unknown Client Error';
   raw: Response = null;
 
   protected internalErrors = [0, 404, 500];
@@ -17,11 +17,11 @@ export class ApiError {
     this.httpCode = error.status;
     this.raw = error;
 
-    if (this.httpCode != 0) {
+    if (this.httpCode !== 0) {
       this.message = error.json().error;
     }
 
-    if (error.headers.get("X-Deprecated-Endpoint") == "true") {
+    if (error.headers.get('X-Deprecated-Endpoint') === 'true') {
       console.warn(`${error.url} is a deprecated endpoint`);
     }
   }
@@ -41,7 +41,7 @@ export class Api {
   ) { }
 
   get defaultHeaders(): Headers {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Accept', 'application/json');
 
     // User credentials

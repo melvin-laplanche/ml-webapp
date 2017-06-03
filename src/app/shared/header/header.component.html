@@ -10,7 +10,7 @@
   </div>
 
   <div class="middle">
-    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
       <md-input-container *ngIf="hasSearchBar" class="desktop-search-bar">
         <md-icon mdPrefix>search</md-icon>
         <input mdInput formControlName="query">
@@ -27,7 +27,7 @@
   </div>
 
   <md-toolbar-row class="phone-search-bar" *ngIf="phoneSearchBarOpened && hasSearchBar">
-    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
       <md-input-container>
         <md-icon mdPrefix>search</md-icon>
         <input mdInput formControlName="query">

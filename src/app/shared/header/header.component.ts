@@ -8,16 +8,14 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
 })
 export class HeaderComponent implements OnInit {
-  @Input() hasSearchBar: boolean = false;
-  @Output("onMenuOpen") onMenuOpen = new EventEmitter();
+  @Input() hasSearchBar = false;
+  @Output() onMenuOpen = new EventEmitter();
 
   // Triggered when the user submit the search form
-  @Output("onSearch") onSearchEvent = new EventEmitter<string>();
-
-  // Triggered each time the user update the search input
-  @Output("onSearching") onSearchingEvent = new EventEmitter<string>();
+  @Output() onSearch = new EventEmitter<string>();
 
   searchForm: FormGroup;
+  phoneSearchBarOpened = false;
 
   constructor(
     private fb: FormBuilder
@@ -30,7 +28,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearch() {
-    this.onSearchEvent.emit(this.searchForm.controls['query'].value)
+  search() {
+    this.onSearch.emit(this.searchForm.controls['query'].value)
   }
 }
