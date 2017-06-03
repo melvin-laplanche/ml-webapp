@@ -18,8 +18,6 @@ import { UsersService, SignInParams } from '../users.service';
 
 class UsersServiceStub {
   signIn(data: SignInParams): Observable<any> {
-    alert(data);
-
     if (data.email == 'trigger.failure@domain.tld') {
       return Observable.throw('err');
     } else {
