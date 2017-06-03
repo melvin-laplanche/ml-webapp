@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -16,18 +17,20 @@ export class HeaderComponent implements OnInit {
   // Triggered each time the user update the search input
   @Output("onSearching") onSearchingEvent = new EventEmitter<string>();
 
-  constructor() { }
+  searchForm: FormGroup;
+
+  constructor(
+    private fb: FormBuilder
+  ) {
+    this.searchForm = this.fb.group({
+      query: ['', [Validators.required]],
+    });
+  }
 
   ngOnInit() {
   }
 
-  searchDataUpdated(event: KeyboardEvent) {
-    const value = (<HTMLInputElement>event.target).value;
-
-    if (event.keyCode == 13) {
-      this.onSearchEvent.emit(value)
-    } else {
-      this.onSearchingEvent.emit(value)
-    }
+  onSearch() {
+    this.onSearchEvent.emit(this.searchForm.controls['query'].value)
   }
 }

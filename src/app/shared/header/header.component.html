@@ -1,6 +1,6 @@
 <md-toolbar color="primary">
   <div class="start">
-    <button md-icon-button (click)="onMenuOpen.emit()">
+    <button md-icon-button (click)="onMenuOpen.emit()" class="qa-menu-button">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
 
@@ -10,10 +10,12 @@
   </div>
 
   <div class="middle">
-    <md-input-container *ngIf="hasSearchBar" class="desktop-search-bar">
-      <md-icon mdPrefix>search</md-icon>
-      <input mdInput (keydown)="searchDataUpdated($event)">
-    </md-input-container>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <md-input-container *ngIf="hasSearchBar" class="desktop-search-bar">
+        <md-icon mdPrefix>search</md-icon>
+        <input mdInput formControlName="query">
+      </md-input-container>
+    </form>
   </div>
 
   <div class="end">
@@ -25,9 +27,11 @@
   </div>
 
   <md-toolbar-row class="phone-search-bar" *ngIf="phoneSearchBarOpened && hasSearchBar">
-    <md-input-container>
-      <md-icon mdPrefix>search</md-icon>
-      <input mdInput (keydown)="searchDataUpdated($event)">
-    </md-input-container>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <md-input-container>
+        <md-icon mdPrefix>search</md-icon>
+        <input mdInput formControlName="query">
+      </md-input-container>
+    </form>
   </md-toolbar-row>
 </md-toolbar>
