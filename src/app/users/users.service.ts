@@ -60,7 +60,7 @@ export class UsersService extends Api {
       .catch(err => this.fail(err))
   }
 
-  refreshUserData(userId: string): Observable<User> {
+  refreshUserData(userId: number): Observable<User> {
     const endpoint = this.baseEndpoint + `/` + userId;
 
     return this.http

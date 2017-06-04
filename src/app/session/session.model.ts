@@ -1,16 +1,19 @@
-export class Session {
-  private user_id: string
-  public token: string
+export class SessionPayload {
+  public user_id = 0;
+  public token = '';
+}
 
-  constructor(payload: Session) {
+export class Session extends SessionPayload {
+  constructor(payload: SessionPayload) {
+    super();
     Object.assign(this, payload);
   }
 
-  get userId(): string {
+  get userId(): number {
     return this.user_id
   }
 
-  set userId(id: string) {
+  set userId(id: number) {
     this.user_id = id;
   }
 }
