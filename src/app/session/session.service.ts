@@ -17,12 +17,6 @@ export class SessionService {
   private sessionFetched = false;
 
   constructor(private store: Store<AppState>) {
-    const session = this.getSession();
-
-    if (session != null) {
-      this.session = session;
-      this.store.dispatch(signInAction());
-    }
   }
 
   signUserIn(session: Session) {
@@ -54,7 +48,7 @@ export class SessionService {
 
       const session = new Session(JSON.parse(dataStr));
       // Let's soft check that the data aren't fake
-      if (session.userId === '' || session.token === '') {
+      if (session.userId <= 0 || !session.token) {
         throw new Error('Invalid Data');
       }
       return session;
