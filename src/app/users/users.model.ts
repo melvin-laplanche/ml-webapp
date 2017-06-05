@@ -1,9 +1,13 @@
-export class User {
-  private id: string
-  private name: string
-  private email: string
+export class UserPayload {
+  public id = '';
+  public name = '';
+  public email = '';
+}
 
-  constructor(payload: User) {
+
+export class User extends UserPayload {
+  constructor(payload: UserPayload) {
+    super();
     Object.assign(this, payload);
   }
 }

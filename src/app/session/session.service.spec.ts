@@ -48,7 +48,7 @@ describe('SessionService', () => {
 
   it('should find a session', inject([SessionService], (service: SessionService) => {
     const tokenExpected = 'tokenValue';
-    const userIdExpected = 42;
+    const userIdExpected = '42';
 
     let getItemCallCount = 0;
     lsGetItem.and.callFake((key) => {
@@ -98,7 +98,7 @@ describe('SessionService', () => {
   it('should login the user', inject([SessionService, Store], (service: SessionService, store: Store<any>) => {
     const toSave = new Session({
       token: 'tokenValue',
-      user_id: 42,
+      user_id: '42',
     });
 
     lsSetItem.and.callFake((key, pld: string) => {

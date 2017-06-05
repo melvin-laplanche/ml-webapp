@@ -48,7 +48,7 @@ export class SessionService {
 
       const session = new Session(JSON.parse(dataStr));
       // Let's soft check that the data aren't fake
-      if (session.userId <= 0 || !session.token) {
+      if (!session.userId || !session.token) {
         throw new Error('Invalid Data');
       }
       return session;

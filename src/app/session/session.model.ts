@@ -1,5 +1,5 @@
 export class SessionPayload {
-  public user_id = 0;
+  public user_id = '';
   public token = '';
 }
 
@@ -9,11 +9,11 @@ export class Session extends SessionPayload {
     Object.assign(this, payload);
   }
 
-  get userId(): number {
+  get userId(): string {
     return this.user_id
   }
 
-  set userId(id: number) {
+  set userId(id: string) {
     this.user_id = id;
   }
 }

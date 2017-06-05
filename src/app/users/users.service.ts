@@ -22,8 +22,6 @@ export interface SignInParams {
   password: string;
 }
 
-export const LS_USER_SESSION = 'user_session';
-
 @Injectable()
 export class UsersService extends Api {
   private baseEndpoint = this.baseUrl + '/users'
@@ -60,7 +58,7 @@ export class UsersService extends Api {
       .catch(err => this.fail(err))
   }
 
-  refreshUserData(userId: number): Observable<User> {
+  refreshUserData(userId: string): Observable<User> {
     const endpoint = this.baseEndpoint + `/` + userId;
 
     return this.http
