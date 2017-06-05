@@ -40,6 +40,7 @@ import { LeftDrawerComponent } from './left-drawer';
     MdSidenavModule,
     MdListModule,
     MdToolbarModule,
+    MdButtonModule,
     StoreModule.provideStore(appReducer),
     SessionModule,
   ],

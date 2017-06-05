@@ -1,11 +1,10 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { MdSidenav } from '@angular/material';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { closeMenuAction } from './left-drawer.actions';
 
 import { User } from '../users/users.model';
 import { UsersService } from '../users/users.service';
@@ -21,27 +20,32 @@ import 'rxjs/add/operator/takeWhile';
 export class LeftDrawerComponent extends BaseComponent implements OnInit {
   public userState$: Observable<boolean>;
   public menuState$: Observable<boolean>;
-  @Input() sidenav: MdSidenav;
+
+  @Output() onOpen = new EventEmitter();
+  @Output() onClose = new EventEmitter();
+
+  isLogged = false;
 
   constructor(
     protected store: Store<AppState>,
     private usersService: UsersService
   ) {
     super(store);
-    this.userState$ = this.select('userState');
-    this.menuState$ = this.select('menuState');
   }
 
   ngOnInit() {
-    this.sidenav.onClose.takeWhile(() => this._isActive).subscribe(() => {
-      this.store.dispatch(closeMenuAction());
-    });
+    this.userState$ = this.select('userState');
+    this.menuState$ = this.select('menuState');
+
+    this.userState$.subscribe((v) => {
+      this.isLogged = v;
+    })
 
     this.menuState$.subscribe((isOpen) => {
       if (isOpen) {
-        this.sidenav.open();
+        this.onOpen.emit();
       } else {
-        this.sidenav.close();
+        this.onClose.emit()
       }
     });
   }

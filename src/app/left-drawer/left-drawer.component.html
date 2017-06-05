@@ -1,5 +1,5 @@
 <md-toolbar>
-  <button md-icon-button (click)="sidenav.close()">
+  <button md-icon-button (click)="onClose.emit()">
     <i class="material-icons app-toolbar-menu">close</i>
   </button>
 
@@ -7,14 +7,14 @@
 </md-toolbar>
 
 <md-nav-list>
-  <a md-list-item routerLink="/blog" (click)="sidenav.close()" routerLinkActive="active">Blog</a>
+  <a md-list-item routerLink="/blog" (click)="onClose.emit()" routerLinkActive="active">Blog</a>
 
-  <ng-container *ngIf="!(userState$ | async)">
-    <a md-list-item routerLink="/users/sign-in" (click)="sidenav.close()" routerLinkActive="active">Sign In</a>
-    <a md-list-item routerLink="/users/sign-up" (click)="sidenav.close()" routerLinkActive="active">Sign Up</a>
+  <ng-container *ngIf="!isLogged">
+    <a md-list-item routerLink="/users/sign-in" (click)="onClose.emit()" routerLinkActive="active" class="qa-sign-in">Sign In</a>
+    <a md-list-item routerLink="/users/sign-up" (click)="onClose.emit()" routerLinkActive="active" class="qa-sign-up">Sign Up</a>
   </ng-container>
 
-  <ng-container *ngIf="userState$ | async">
-    <md-list-item (click)="signOut(); sidenav.close()">Sign Out</md-list-item>
+  <ng-container *ngIf="isLogged">
+    <md-list-item (click)="signOut(); onClose.emit()" class="qa-sign-out">Sign Out</md-list-item>
   </ng-container>
 </md-nav-list>

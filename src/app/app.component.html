@@ -1,6 +1,10 @@
 <md-sidenav-container>
   <md-sidenav #sidenav mode="over">
-    <app-left-drawer [sidenav]="sidenav"></app-left-drawer>
+    <!--
+      Ugly hack: as of today (June 2017) md-sidenav HAS to be the first element
+      inside md-sidenav-container, so there's no way to wrap it in app-left-drawer.
+      -->
+    <app-left-drawer (onClose)="sidenav.close()" (onOpen)="sidenav.open()"></app-left-drawer>
   </md-sidenav>
 
   <div class="sidenav-content">
