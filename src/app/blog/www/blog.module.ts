@@ -12,7 +12,6 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ListingComponent } from './listing/listing.component';
 import { BlogComponent } from './blog.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
