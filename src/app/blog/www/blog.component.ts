@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.state';
-import { openMenuAction } from '../app.actions';
+import { AppState } from '../../app.state';
+import { openMenuAction } from '../../app.actions';
 
 @Component({
   selector: 'app-blog',

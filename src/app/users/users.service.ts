@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
-import { Api } from './../tools/Api'
+import { Api } from './../tools/api'
 import { Session, SessionService } from '../session'
 
 import { Store } from '@ngrx/store';
