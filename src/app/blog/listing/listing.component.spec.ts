@@ -1,4 +1,3 @@
-import { Directive, Input, HostListener, DebugElement } from '@angular/core'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 
@@ -9,6 +8,7 @@ import { User } from '../../users'
 
 // Stubs
 
+import { Directive, Input, HostListener, DebugElement } from '@angular/core'
 @Directive({
   selector: '[routerLink]',
 })
