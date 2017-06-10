@@ -15,7 +15,7 @@ import { MdSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { UsersService, SignUpParams, SignInParams } from '../users.service';
 
-import { ApiError } from '../../tools/Api';
+import { ApiError } from '../../tools/api';
 
 import { SignUpComponent } from './sign-up.component';
 
