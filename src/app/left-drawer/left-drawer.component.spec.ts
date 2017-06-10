@@ -11,6 +11,19 @@ import { MdToolbarModule } from '@angular/material';
 
 // stubs
 
+import { Directive, Input, HostListener, DebugElement } from '@angular/core'
+@Directive({
+  selector: '[routerLink]',
+})
+export class RouterLinkStubDirective {
+  @Input() routerLink: any
+  navigatedTo: any = null
+
+  @HostListener('click') onClick() {
+    this.navigatedTo = this.routerLink
+  }
+}
+
 import { Store } from '@ngrx/store';
 class StoreStub {
   dispatch(action: Action) { }
@@ -34,9 +47,17 @@ describe('LeftDrawerComponent', () => {
   let menuState = new Subject();
   let userState = new Subject();
 
+  const getLinks = () => {
+    const linkElements = fixture.debugElement
+      .queryAll(By.directive(RouterLinkStubDirective))
+
+    return linkElements
+      .map(de => de.injector.get(RouterLinkStubDirective) as RouterLinkStubDirective)
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LeftDrawerComponent],
+      declarations: [LeftDrawerComponent, RouterLinkStubDirective],
       imports: [
         MdToolbarModule
       ],
@@ -99,8 +120,10 @@ describe('LeftDrawerComponent', () => {
     userState.next(true);
     fixture.detectChanges();
 
-    expect(fixture.debugElement.query(By.css('.qa-sign-in'))).toBeFalsy('sign in button should NOT be visible');
-    expect(fixture.debugElement.query(By.css('.qa-sign-up'))).toBeFalsy('sign up button should NOT be visible');
+    const links = getLinks();
+    expect(links.length).toBe(1);
+    expect(links[0].routerLink).toBe('/blog');
+
     expect(fixture.debugElement.query(By.css('.qa-sign-out'))).toBeTruthy('sign out button should be visible');
   });
 
@@ -108,8 +131,12 @@ describe('LeftDrawerComponent', () => {
     userState.next(false);
     fixture.detectChanges();
 
-    expect(fixture.debugElement.query(By.css('.qa-sign-in'))).toBeTruthy('sign in button should be visible');
-    expect(fixture.debugElement.query(By.css('.qa-sign-up'))).toBeTruthy('sign up button should be visible');
+    const links = getLinks();
+    expect(links.length).toBe(3);
+    expect(links[0].routerLink).toBe('/blog');
+    expect(links[1].routerLink).toBe('/users/sign-in');
+    expect(links[2].routerLink).toBe('/users/sign-up');
+
     expect(fixture.debugElement.query(By.css('.qa-sign-out'))).toBeFalsy('sign out button should NOT be visible');
   });
 
