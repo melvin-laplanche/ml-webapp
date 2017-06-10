@@ -124,7 +124,6 @@ describe('ListingComponent', () => {
     fab.click()
     fixture.detectChanges()
 
-    console.log(links);
     expect(links[0].navigatedTo).toBe('/blog/add', 'should have navigated to /blog/add')
   })
 })
