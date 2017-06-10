@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MdIconModule, MdButtonModule } from '@angular/material';
+
 // Router
 import { RouterModule } from '@angular/router';
 import { blogRoutes } from './blog.routes';
@@ -17,6 +19,8 @@ import { BlogComponent } from './blog.component';
   imports: [
     CommonModule,
     RouterModule.forChild(blogRoutes),
+    MdIconModule,
+    MdButtonModule,
     HeaderModule,
   ],
   exports: [
