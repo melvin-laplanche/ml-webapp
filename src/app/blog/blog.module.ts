@@ -13,6 +13,7 @@ import { HeaderModule } from '../shared/header/header.module';
 import { ArticlesComponent } from './articles/articles.component';
 import { ListingComponent } from './listing/listing.component';
 import { BlogComponent } from './blog.component';
+import { AddArticleComponent } from './add-article/add-article.component';
 
 
 @NgModule({
@@ -26,6 +27,6 @@ import { BlogComponent } from './blog.component';
   exports: [
     RouterModule
   ],
-  declarations: [ArticlesComponent, ListingComponent, BlogComponent]
+  declarations: [ArticlesComponent, ListingComponent, BlogComponent, AddArticleComponent]
 })
 export class BlogModule { }

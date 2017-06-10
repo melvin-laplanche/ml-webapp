@@ -1,5 +1,5 @@
 <app-blog-articles></app-blog-articles>
 
-<a *ngIf="user && user.isAdmin" class="add-new-article" md-fab>
+<a *ngIf="user && user.isAdmin" class="add-new-article" md-fab routerLink="/blog/add">
   <md-icon>add</md-icon>
 </a>
