@@ -1,15 +1,13 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
+  "short_name": "Melvin Laplanche",
+  "name": "Melvin Laplanche",
+  "icons": [{
+    "src": "favicon.ico",
+    "sizes": "64x64 48x48 32x32 24x24 16x16",
+    "type": "image/x-icon"
+  }],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#00BCD4",
+  "background_color": "#00BCD4"
 }
