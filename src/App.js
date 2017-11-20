@@ -1,10 +1,9 @@
-// Flow
+// @flow
 import React, { Component } from 'react';
 
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
+import createHistory from 'history/createBrowserHistory'
 
-import thunkMiddleware from 'redux-thunk'
+import { Provider } from 'react-redux'
 
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 import createPalette from 'material-ui/styles/createPalette';
@@ -13,8 +12,8 @@ import {light} from 'material-ui/styles/createPalette';
 import cyan from 'material-ui/colors/cyan';
 import yellow from 'material-ui/colors/yellow';
 
-import { AboutContainer } from './scenes/About';
-import {reducer} from './services/reducer';
+import { Root } from './scenes/Root';
+import newStore from './store';
 import './App.css';
 
 const theme = createMuiTheme({palette: createPalette(light)});
@@ -32,19 +31,15 @@ theme.palette.getContrastText = color => {
   return originalGetContrastText(color)
 }
 
-// Add the reducer to your store on the `router` key
-// Also apply our middleware for navigating
-const store = createStore(
-  reducer,
-  applyMiddleware(thunkMiddleware)
-)
+const history = createHistory()
+const store = newStore(history)
 
-class App extends Component {
+class App extends Component<{}> {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
-          <AboutContainer />
+          <Root history={history} />
         </Provider>
       </MuiThemeProvider>
     );

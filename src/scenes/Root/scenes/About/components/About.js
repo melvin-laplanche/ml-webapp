@@ -5,7 +5,7 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 
-import { User } from '../../../services/users/models'
+import { User } from '../../../../../services/users/models'
 
 type Props = {
   user: User

@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import { About } from "./components/About"
-import { fetchFeaturedUser } from "../../services/users/actions"
+import { fetchFeaturedUser } from "../../../../services/users/actions"
 import { Map } from 'immutable';
 
 type Props = {
